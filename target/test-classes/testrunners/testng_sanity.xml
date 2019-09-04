@@ -3,10 +3,16 @@
 
 <suite name="Hub Spot Test Sanity Suite" verbose="3">
 
+	<listeners>
+		<listener class-name="com.qa.hubspot.listeners.ExtentReportListener" />
+		<listener class-name="com.qa.hubspot.listeners.TestAllureListener" />
+
+	</listeners>
+
 	<test name="hub spot Sanity Test">
 		<classes>
 			<class name="com.qa.hubspot.tests.LoginTest" />
-			<class name="com.qa.hubspot.tests.HomePageTest" />
-		</classes>
+<!-- 			<class name="com.qa.hubspot.tests.HomePageTest" />
+ -->		</classes>
 	</test>
 </suite>

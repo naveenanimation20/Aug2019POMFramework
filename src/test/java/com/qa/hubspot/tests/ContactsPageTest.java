@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.qa.hubspot.Base.BasePage;
@@ -13,6 +14,7 @@ import com.qa.hubspot.pages.ContactsPage;
 import com.qa.hubspot.pages.HomePage;
 import com.qa.hubspot.pages.LoginPage;
 import com.qa.hubspot.util.Constants;
+import com.qa.hubspot.util.ExcelUtil;
 
 public class ContactsPageTest {
 
@@ -39,10 +41,17 @@ public class ContactsPageTest {
 		System.out.println("contacts page title is: " + title);
 		Assert.assertEquals(title, Constants.CONTACTS_PAGE_TITLE);
 	}
+	
+	
+	@DataProvider()
+	public Object[][] getContactData(){
+		Object data[][] = ExcelUtil.getTestData("createcontact");
+		return data;
+	}
 
-	@Test(priority = 2)
-	public void createNewContactTest() {
-		contactsPage.createNewContact("Shalu@gmail.com", "Shalu", "Sandy", "QA Lead");
+	@Test(priority = 2, dataProvider="getContactData")
+	public void createNewContactTest(String email, String firstname, String lastname, String jobTitle) {
+		contactsPage.createNewContact(email, firstname, lastname, jobTitle);
 	}
 
 	@AfterMethod

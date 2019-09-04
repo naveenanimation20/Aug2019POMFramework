@@ -38,7 +38,8 @@ public class BasePage {
 		flash = prop.getProperty("elementflash");
 
 		if (browser.equalsIgnoreCase("chrome")) {
-			WebDriverManager.chromedriver().setup();
+			//WebDriverManager.chromedriver().setup();
+			System.setProperty("webdriver.chrome.driver", "/Users/NaveenKhunteta/Downloads/chromedriver");
 			if (headless.equalsIgnoreCase("yes")) {
 				ChromeOptions co = new ChromeOptions();
 				co.addArguments("--headless");

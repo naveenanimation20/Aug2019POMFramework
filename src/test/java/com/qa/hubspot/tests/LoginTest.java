@@ -12,6 +12,10 @@ import com.qa.hubspot.Base.BasePage;
 import com.qa.hubspot.pages.LoginPage;
 import com.qa.hubspot.util.Constants;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+
 public class LoginTest {
 
 	WebDriver driver;
@@ -29,11 +33,15 @@ public class LoginTest {
 	}
 
 	@Test(priority = 1, description = "login test with correct username and correct password....")
+	@Description("login test with correct username and correct password...")
+	@Severity(SeverityLevel.BLOCKER)
 	public void loginTest() {
 		loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 	}
 
 	@Test(priority = 2, description = "login page title test....")
+	@Description("login page title test....")
+	@Severity(SeverityLevel.NORMAL)
 	public void loginPageTitleTest() {
 		String title = loginPage.getLoginPageTitle();
 		System.out.println(title);
